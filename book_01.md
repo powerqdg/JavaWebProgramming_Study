@@ -23,8 +23,8 @@ PC에 설치되어 실행되는 애플리케이션으로서 실행 속도가 빠
 ### 1.2 클라이언트·서버 애플리케이션
 #### 설명
 애플리케이션의 기능을 클라이언트와 서버로 분리한다.
- - 업무 변화에 대응하기 쉽다.
- - 서버 쪽에서 데이터베이스에 접속 → 보안이 강화된다.
+- 업무 변화에 대응하기 쉽다.
+- 서버 쪽에서 데이터베이스에 접속 → 보안이 강화된다.
 
 #### 실습학습내용
 1. 요청 흐름 : CalculatorFrame → CalculatorAgent → CalculatorServer
@@ -62,8 +62,8 @@ PC에 설치되어 실행되는 애플리케이션으로서 실행 속도가 빠
 ### 1.5 웹 애플리케이션 아키텍처의 특징
 #### 설명
 웹 애플리케이션은 인터넷 환경을 기반으로 매우 유연한 애플리케이션 사용 환경을 제공한다.
- - 클라이언트와의 통신은 웹 서버가 전담 → 네트워크 및 멀티 스레드 프로그래밍으로부터 탈출
- - 애플리케이션  서버는 애플리케이션 실행 및 관리에 집중
+- 클라이언트와의 통신은 웹 서버가 전담 → 네트워크 및 멀티 스레드 프로그래밍으로부터 탈출
+- 애플리케이션  서버는 애플리케이션 실행 및 관리에 집중
 
 ## 2022.03.24
 ### 제2장 웹 프로그래밍 기초 다지기
@@ -72,16 +72,16 @@ PC에 설치되어 실행되는 애플리케이션으로서 실행 속도가 빠
 HTTP는 웹 브라우저와 웹 서버 사이의 데이터 통신 규칙
 
 #### HTTP모니터링
- - 웹 브라우저와 웹 서버 사이에 주고 받는 데이터를 들여다보기 위해서는 HTTP프록시 프로그램 필요.(Charles, Fiddler 등)
- - 프록시 서버(Proxy Server)는 클라이언트와 서버 사이에 통신을 중계해주는 컴퓨터나 프로그램을 말함
+- 웹 브라우저와 웹 서버 사이에 주고 받는 데이터를 들여다보기 위해서는 HTTP프록시 프로그램 필요.(Charles, Fiddler 등)
+- 프록시 서버(Proxy Server)는 클라이언트와 서버 사이에 통신을 중계해주는 컴퓨터나 프로그램을 말함
 
 #### HTTP 요청·응답
- - HTTP요청: 요청라인, 요청헤더, 공백라인과 요청데이터
- - HTTP응답: 상태라인, 응답헤더, 공백라인과 응답데이터
+- HTTP요청 : 요청라인, 요청헤더, 공백라인과 요청데이터
+- HTTP응답 : 상태라인, 응답헤더, 공백라인과 응답데이터
 
 #### HTTP 요청 형식
- - GET: 브라우저의 주소창에 직접 URL을 입력하거나 사용자가 링크를 클릭하는 경우 발생, 사용자가 입력한 데이터가 주소창에 그대로 노출되므로 로그인이나 결제정보를 보내면 안된다.
- - POST: 웹 서버에 데이터를 보낼 때 메시지 본문 부분에 붙여서 보냄, 보내는 데이터의 크기에 제한이 없다.
+- GET  : 브라우저의 주소창에 직접 URL을 입력하거나 사용자가 링크를 클릭하는 경우 발생, 사용자가 입력한 데이터가 주소창에 그대로 노출되므로 로그인이나 결제정보를 보내면 안된다.
+- POST : 웹 서버에 데이터를 보낼 때 메시지 본문 부분에 붙여서 보냄, 보내는 데이터의 크기에 제한이 없다.
 
 ### 제3장 서블릿 프로그래밍
 ### 3.1 CGI프로그램과 서블릿
@@ -97,10 +97,10 @@ HTTP는 웹 브라우저와 웹 서버 사이의 데이터 통신 규칙
 
 ### 3.2 Java EE, WAS
 #### Java EE
- - Java EE는 기능 확장이 쉽다.
- - 이기종 간의 이식이 쉽다.
- - 신뢰성과 보안성이 높다.
- - 트랜잭션 관리와 분산 기능을 쉽게 구현할 수 있는 기능을 제공한다.
+- Java EE는 기능 확장이 쉽다.
+- 이기종 간의 이식이 쉽다.
+- 신뢰성과 보안성이 높다.
+- 트랜잭션 관리와 분산 기능을 쉽게 구현할 수 있는 기능을 제공한다.
 
 #### WAS(Web Application Server)
 클라이언트 서버 시스템 구조에서 서버 쪽 애플리케이션의 생성과 실행, 소멸을 관리하는 프로그램을 "애플리케이션 서버(Application Server)"라 한다.
@@ -111,12 +111,12 @@ HTTP는 웹 브라우저와 웹 서버 사이의 데이터 통신 규칙
 
 ### 3.3 웹 프로젝트 준비
 #### 웹 프로젝트 폴더 구조
- - src: 자바 소스 파일을 두는 폴더
- - build/classes: 컴파일된 자바 클래스 파일(.class)이 놓이는 폴더
- - WebContent: HTML(.html), CSS(.css), JavaScript(.js), JSP, 이미지 파일 등 웹 콘텐츠를 두는 폴더
- - WebContent/WEB-INF: 웹 애플리케이션의 설정과 관련된 파일을 두는 폴더, 이 폴더에 있는 파일은 클라이언트에서 요청할 수 없음
- - WebContent/WEB-INF/web.xml: 웹 애플리케이션 배치 설명서(Deployment Descriptor)파일로 "DD파일"이라고도 부름
- - WebContent/WEB-INF/lib: 자바 아카이브(Archive) 파일(.jar)을 두는 폴더
+- src : 자바 소스 파일을 두는 폴더
+- build/classes : 컴파일된 자바 클래스 파일(.class)이 놓이는 폴더
+- WebContent : HTML(.html), CSS(.css), JavaScript(.js), JSP, 이미지 파일 등 웹 콘텐츠를 두는 폴더
+- WebContent/WEB-IN : 웹 애플리케이션의 설정과 관련된 파일을 두는 폴더, 이 폴더에 있는 파일은 클라이언트에서 요청할 수 없음
+- WebContent/WEB-INF/web.xml : 웹 애플리케이션 배치 설명서(Deployment Descriptor)파일로 "DD파일"이라고도 부름
+- WebContent/WEB-INF/lib : 자바 아카이브(Archive) 파일(.jar)을 두는 폴더
 
 ### 3.4 서블릿 만들기
 서블릿 프로그래밍의 핵심은 Servlet 인터페이스를 이해하는 것, 보통 서블릿을 만들려면 HttpServlet 클래스를 상속받아야 한다고 생각하는 경우가 많다.
@@ -133,8 +133,8 @@ HTTP는 웹 브라우저와 웹 서버 사이의 데이터 통신 규칙
 8. 디렉터리에 웰컴 파일이 여러 개 존재할 경우, web.xml의 "welcome-file-list"태그에 선언된 순서대로 찾는다.
 
 ### 3.5 웹 애플리케이션 배치
- - Eclipse를 통한 자동 배치
- - 웹 아카이브(Web Archive)파일 생성하여 배치
+- Eclipse를 통한 자동 배치
+- 웹 아카이브(Web Archive)파일 생성하여 배치
 
 ### 3.6 GenericServlet의 사용
 GenericServlet 추상 클래스는 Servlet의 init(), destory(), getServletConfig(), getServletInfo()를 미리 구현하여 하위 클래스에게 공통의 필드와 메서드를 상속해 주고자 존재한다.
@@ -149,3 +149,77 @@ response.setContentType("text/plain"), response.setCharacterEncoding("UTF-8") �
 5. Servlet 3.0 사양부터는 애노테이션으로 서블릿 배치 정보를 설정할 수 있다. @WebServlet("/calc")
 
 ### 제4장 서블릿과 JDBC
+1. GenericServlet 클래스를 확장한 HttpServlet 클래스를 이용하여 서블릿 생성해봅니다.
+2. 클라이언트의 요청을 GET과 POST 등으로 구분하여 처리하는 방법과 리다이렉트, 리프레시를 다루는 방법을 배웁니다.
+3. 초기화 매개변수를 이용하여 설정 정보를 외부 파일에 두는 방법과 서블릿에서 이를 참고하는 방법을 알아봅니다.
+4. 서블릿 실행 전, 후에 필터를 끼우는 방법을 배웁니다.
+
+#### HttpServlet 클래스
+1. HttpServlet 클래스는 GenericServlet 클래스의 하위 클래스이다.
+2. HttpServlet을 상속받으면 GenericServlet 클래스를 상속받는 것과 마찬가지로 javax.servlet.Servlet 인터페이스를 구현한 것이 된다.
+3. 클라이언트 요청이 들어오면, 첫째로 상속받은 HttpServlet의 service() 메서드가 호출되고, 둘째로 service()는 클라이언트의 요청 방식에 따라 doGet(), doPost(), doPut() 메서드를 호출한다. 따라서 HttpServlet를 상속받을 때 service() 메서드를 직접 구현하기보다는 클라이언트의 요청 방식에 따라 doXXX() 메서드를 오버라이딩 합니다.
+
+#### JDBC
+자바에서는 데이터베이스로부터 데이터를 가져오거나 입력, 수정, 삭제 등을 할 때 JDBC를 사용한다.
+1. JDBC Type 1 - ODBC와 연결
+- JDBC Type 1 드라이버는 ODBC 드라이버와의 연결을 제공한다.
+- JRE에 기본으로 포함되며, Excel이나 Access 파일에 접속할 때 유용하다.
+- ODBC 드라이버를 거치기 때문에 네 가지 유형의 드라이버 중 가장 속도가 느리다.
+2. JDBC Type 2 - DBMS벤더 API 호출
+- DBMS 벤더에서 제공하는 API를 사용한다.
+- JDBC Type 2 드라이버는 별도로 내려받아야 한다.
+3. JDBC Type 3 - 미들웨어 서버를 경우
+- 미들웨어 서버를 거쳐 DBMS에 접속한다.
+- 미들웨어 서버와 함께 제공되는 JDBC 드라이버를 사용한다.
+- ODBC나 벤더 API처럼 C나 C++로 만든 API를 호출하지 않기 때문에 Pure Java라 한다.
+4. JDBC Type 4 - DBMS 프로토콜로 직접 연결
+- DBMS 전용 프로토콜을 사용하여 직접 통신을 한다.
+- DBMS 벤더에서 제공하는 드라이버를 내려받아야 한다.
+- ODBC나 벤더 API처럼 C나 C++로 만든 API를 호출하지 않기 때문에 Pure Java라 한다.
+
+#### 실습학습내용
+1. JDBC 프로그래밍의 첫 번째 작업은 DriverManager를 이용하여 java.sql.Driver 인터페이스 구현체를 등록하는 것.
+2. DriverManager의 getConnection()을 호출하여 DB 서버에 연결할 수 있다. java.sql.Connection 인터페이스 구현체를 반환한다.
+3. java.sql.Connection 인터페이스 구현체의 주요 메서드 중 createStatement(), prepareStatement(), prepareCall()는 SQL문을 실행하는 객체를 반환하고 commit(), rollback()은 트랜잭션 처리를 수행하는 메서드이다.
+4. createStatement()는 java.sql.Statement 인터페이스의 구현체를 반환한다.
+5. java.sql.Statement 인터페이스의 구현체의 주요 메서드는 아래와 같다.
+- executeQuery() : 결과가 만들어지는 SQL문을 실행할 때 사용한다. 보통 SELECT문을 실행
+- executeUpdate() : DML과 DDL 관련 SQL문을 실행할 때 사용한다.(DML: INSERT, UPDATE, DELETE / DDL: CREATE, ALTER, DROP)
+- execute() : SELECT, DML, DDL 명령문 모두에 사용 가능하다.
+- executeBatch() : addBatch()로 등록한 여러 개의 SQL문을 한꺼번에 실행할 때 사용한다.
+6. executeQuery()는 java.sql.ResultSet 인터페이스의 구현체를 반환한다. 이 객체를 통해 서버에서 질의 결과를 가져올 수 있다.
+- first(), last(), previous(), next(), getXXX(), updateXXX(), deleteRow()
+- SELECT MNO, MNAME FROM MEMBERS → SELECT getInt(1), getString(2) FROM MEMBERS 또는 SELECT getInt("MNO"), getString("MNAME") FROM MEMBERS
+7. (중요!)JDBC 프로그래밍을 할 때 주의할 점은 정상적으로 수행되든 오류가 발생하든 간에 반드시 자원 해제를 수행하는 것이다.
+8. DriverManager와 Connection, PreparedStatement 모두 java.sql 패키지에 소속되어 있는데, 간혹 임포트(import) 코드를 자동 생성하는 과정에서 com.sum.corba...와 같은 엉뚱한 패키지를 임포트 하는 경우가 종종 있다. 주의하자.
+9. PreparedStatement는 반복적인 질의를 하거나, 입력 매개변수가 많은 경우에 유용. 이미지와 같은 바이너리 데이터를 저장, 변경할 때는 PreparedStatement만이 가능하다. 
+10. 웹 브라우저에서 보낸 한글 데이터를 서블릿에서 꺼낼 때 글자가 깨지는 경우가 있다. 서블릿에서 getParameter()을 호출하기 전에 request.setCharacterEncoding()을 하자.
+11. GET요청으로 받은 한글이 깨지는 경우. server.xml에서 URIEncoding="UTF-8"을 추가하자.
+
+#### 리프래시
+일정 시간이 지나고 나서 자동으로 서버에 요청을 보내는 방법
+- 응답 헤더를 이용한 리프래시
+- HTML의 meta 태그를 이용한 리프래시
+
+#### 리다이렉트
+클라이언트로 응답 결과를 출력하지 않고 즉시 다른 url로 이동하게 하는 방법, sendRedirect()
+
+#### 서블릿 초기화 매개변수
+1. 서블릿을 생성하고 초기화할 때, 즉 init()를 호출할 때 서블릿 컨테이너가 전달하는 데이터로 보통 데이터베이스 연결 정보와 같은정적인 데이터를 서블릿에 전달할 때 사용
+2. web.xml에 설정하는 방법과 애노테이션을 사용하여 설정하는 방법이 있다.
+3. 이전 자바 코드 안에 JDBC드라이버 클래스를 직접 작성했는데, Class.forName(this.getinitParameter("driver"))로 바꾸면 web.xml에서만 수정하면 되기 때문에 유지보수가 편하다.
+
+#### 컨텍스트 초기화 매개변수
+같은 웹 애플리케이션에 소속된 서블릿들이 공유하는 매개변수
+
+#### 필터
+필터는 서블릿 실행 전후에 어떤 작업을 하고자 할때 사용하는 기술, 예를 들면 클라이언트가 보낸 데이터의 암호를 해제한다거나, 서블릿이 실행되기 전에 필요한 자원을 미리 준비한다거나, 서블릿이 실행될 때마다 로그를 남긴다거나 하는 작업을 필터를 통해 처리할 수 있다. 
+1. javax.servlet.Filter 인터페이스를 구현해야 한다.
+2. web.xml에 설정하는 방법과 애노테이션을 사용하여 설정하는 방법이 있다.
+
+
+
+
+
+
+
