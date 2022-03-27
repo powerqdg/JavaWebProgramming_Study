@@ -24,17 +24,25 @@ public class MemberListServlet extends GenericServlet {
 		ResultSet rs = null;
 		
 		try {
+			//1. 사용할 JDBC 드라이버를 등록하라.
 			DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
+			
+			//2. 드라이버를 사용하어 Oracle 서버와 연결하라.
 			conn = DriverManager.getConnection(
 					"jdbc:oracle:thin:@localhost:1521:xe", //JDBC URL
 					"study",	// DBMS 사용자 아이디
 					"study");	// DBMS 사용자 암호
+			
+			//3. 커넥션 객체로부터 SQL을 던질 객체를 준비하라.
 			stmt = conn.createStatement();
+			
+			//4. SQL을 던지는 객체를  사용하여 서버에 질의하라!
 			rs = stmt.executeQuery(
 					"SELECT MNO,MNAME,EMAIL,CRE_DATE" + 
 					" FROM MEMBERS" +
 					" ORDER BY MNO ASC");
 			
+			//5. 서버에서 가져온 데이터를  사용하여 HTML만들어서 웹 브라우저로 출력하라.
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<html><head><title>회원목록</title></head>");
