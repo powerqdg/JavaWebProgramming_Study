@@ -2,6 +2,9 @@ package spms.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,5 +29,43 @@ public class MemberAddServlet extends HttpServlet {
 		out.println("<input type='reset' value='취소'>");
 		out.println("</form>");
 		out.println("</body></html>");
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Connection conn = null;
+		PreparedStatement stmt = null;
+
+		try {
+			DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
+			conn = DriverManager.getConnection(
+					"jdbc:oracle:thin:@localhost:1521:xe", //JDBC URL
+					"study", // DBMS 사용자 아이디
+					"study"); // DBMS 사용자 암호
+			stmt = conn.prepareStatement(
+					"INSERT INTO MEMBERS(MNO,EMAIL,PWD,MNAME,CRE_DATE,MOD_DATE)"
+					+ " VALUES (MEMBERS_SEQ.NEXTVAL,?,?,?,SYSDATE,SYSDATE)");
+			stmt.setString(1, request.getParameter("email"));
+			stmt.setString(2, request.getParameter("password"));
+			stmt.setString(3, request.getParameter("name"));
+			stmt.executeUpdate();
+			
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<html><head><title>회원등록결과</title></head>");
+			out.println("<body>");
+			out.println("<p>등록 성공입니다!</p>");
+			out.println("</body></html>");
+			
+			try {if (stmt != null) stmt.close();} catch(Exception e) {}
+			try {if (conn != null) conn.close();} catch(Exception e) {}
+		} catch (Exception e) {
+			throw new ServletException(e);
+			
+		} finally {
+			try {if (stmt != null) stmt.close();} catch(Exception e) {}
+			try {if (conn != null) conn.close();} catch(Exception e) {}
+		}
+
 	}
 }
