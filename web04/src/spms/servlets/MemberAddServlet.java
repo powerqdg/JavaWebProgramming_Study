@@ -51,6 +51,11 @@ public class MemberAddServlet extends HttpServlet {
 			stmt.setString(3, request.getParameter("name"));
 			stmt.executeUpdate();
 			
+			// 리다이렉트를 이용한 리프래시
+			response.sendRedirect("list");
+			
+			// 주석처리 - 리다이렉트 이용시, 웹 브라우저에 출력할 내용이 없으므로 HTML을 만들필요 없다.
+			/*
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<html><head><title>회원등록결과</title>");
@@ -67,6 +72,8 @@ public class MemberAddServlet extends HttpServlet {
 			
 			try {if (stmt != null) stmt.close();} catch(Exception e) {}
 			try {if (conn != null) conn.close();} catch(Exception e) {}
+			
+			*/
 		} catch (Exception e) {
 			throw new ServletException(e);
 			
