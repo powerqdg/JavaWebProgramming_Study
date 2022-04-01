@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/member/update")
 @SuppressWarnings("serial")
 public class MemberUpdateServlet extends HttpServlet {
 	@Override
@@ -25,13 +24,14 @@ public class MemberUpdateServlet extends HttpServlet {
 		
 		try {
 			//1. 사용할 JDBC 드라이버를 등록하라.
-			DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
+			//DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
+			Class.forName(this.getInitParameter("driver"));
 			
 			//2. 드라이버를 사용하어 Oracle 서버와 연결하라.
 			conn = DriverManager.getConnection(
-					"jdbc:oracle:thin:@localhost:1521:xe", //JDBC URL
-					"study",	// DBMS 사용자 아이디
-					"study");	// DBMS 사용자 암호
+					this.getInitParameter("url"), //JDBC URL
+					this.getInitParameter("username"),	// DBMS 사용자 아이디
+					this.getInitParameter("password"));	// DBMS 사용자 암호
 			
 			//3. 커넥션 객체로부터 SQL을 던질 객체를 준비하라.
 			stmt = conn.createStatement();
