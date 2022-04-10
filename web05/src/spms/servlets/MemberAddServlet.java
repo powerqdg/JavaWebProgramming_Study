@@ -26,9 +26,6 @@ public class MemberAddServlet extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// CharacterEncodingFilter에서 처리
-		//request.setCharacterEncoding("UTF-8");
-		
 		Connection conn = null;
 		PreparedStatement stmt = null;
 
@@ -42,6 +39,7 @@ public class MemberAddServlet extends HttpServlet {
 			stmt.setString(2, request.getParameter("password"));
 			stmt.setString(3, request.getParameter("name"));
 			stmt.executeUpdate();
+			
 			response.sendRedirect("list");
 		} catch (Exception e) {
 			e.printStackTrace();
