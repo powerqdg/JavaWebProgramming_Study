@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @SuppressWarnings("serial")
+@WebServlet("/member/update")
 public class MemberUpdateServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -25,13 +27,16 @@ public class MemberUpdateServlet extends HttpServlet {
 		try {
 			//1. 사용할 JDBC 드라이버를 등록하라.
 			//DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
-			Class.forName(this.getInitParameter("driver"));
+			//Class.forName(this.getInitParameter("driver"));
+			
+			ServletContext ctx = this.getServletContext();
+			Class.forName(ctx.getInitParameter("driver"));
 			
 			//2. 드라이버를 사용하어 Oracle 서버와 연결하라.
 			conn = DriverManager.getConnection(
-					this.getInitParameter("url"), //JDBC URL
-					this.getInitParameter("username"),	// DBMS 사용자 아이디
-					this.getInitParameter("password"));	// DBMS 사용자 암호
+					ctx.getInitParameter("url"), //JDBC URL
+					ctx.getInitParameter("username"),	// DBMS 사용자 아이디
+					ctx.getInitParameter("password"));	// DBMS 사용자 암호
 			
 			//3. 커넥션 객체로부터 SQL을 던질 객체를 준비하라.
 			stmt = conn.createStatement();
@@ -62,7 +67,6 @@ public class MemberUpdateServlet extends HttpServlet {
 			try {if (conn != null) conn.close();} catch(Exception e) {}
 		} catch (Exception e) {
 			throw new ServletException(e);
-			
 		} finally {
 			try {if (rs != null) rs.close();} catch(Exception e) {}
 			try {if (stmt != null) stmt.close();} catch(Exception e) {}
@@ -79,13 +83,14 @@ public class MemberUpdateServlet extends HttpServlet {
 		
 		try {
 			//1. 사용할 JDBC 드라이버를 등록하라.
-			DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
+			ServletContext ctx = this.getServletContext();
+			Class.forName(ctx.getInitParameter("driver"));
 			
 			//2. 드라이버를 사용하어 Oracle 서버와 연결하라.
 			conn = DriverManager.getConnection(
-					"jdbc:oracle:thin:@localhost:1521:xe", //JDBC URL
-					"study",	// DBMS 사용자 아이디
-					"study");	// DBMS 사용자 암호
+					ctx.getInitParameter("url"), //JDBC URL
+					ctx.getInitParameter("username"),	// DBMS 사용자 아이디
+					ctx.getInitParameter("password"));	// DBMS 사용자 암호
 			
 			//3. 커넥션 객체로부터 SQL을 던질 객체를 준비하라.
 			stmt = conn.prepareStatement(
@@ -102,7 +107,6 @@ public class MemberUpdateServlet extends HttpServlet {
 			try {if (conn != null) conn.close();} catch(Exception e) {}
 		} catch (Exception e) {
 			throw new ServletException(e);
-			
 		} finally {
 			try {if (stmt != null) stmt.close();} catch(Exception e) {}
 			try {if (conn != null) conn.close();} catch(Exception e) {}
