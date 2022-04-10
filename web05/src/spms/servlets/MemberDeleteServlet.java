@@ -22,20 +22,14 @@ public class MemberDeleteServlet extends HttpServlet {
 		PreparedStatement stmt = null;
 		
 		try {
-			ServletContext ctx = this.getServletContext();
-			Class.forName(ctx.getInitParameter("driver"));
-			
-			conn = DriverManager.getConnection(
-					ctx.getInitParameter("url"), //JDBC URL
-					ctx.getInitParameter("username"),	// DBMS 사용자 아이디
-					ctx.getInitParameter("password"));	// DBMS 사용자 암호
+			ServletContext sc = this.getServletContext();
+			conn = (Connection) sc.getAttribute("conn");
 			stmt = conn.prepareStatement("DELETE FROM MEMBERS WHERE MNO=?");
 			stmt.setInt(1, Integer.parseInt(request.getParameter("no")));
 			stmt.executeUpdate();
 			
 			response.sendRedirect("list");
 			try {if (stmt != null) stmt.close();} catch(Exception e) {}
-			try {if (conn != null) conn.close();} catch(Exception e) {}
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("error", e);
@@ -43,7 +37,6 @@ public class MemberDeleteServlet extends HttpServlet {
 			rd.forward(request, response);
 		} finally {
 			try {if (stmt != null) stmt.close();} catch(Exception e) {}
-			try {if (conn != null) conn.close();} catch(Exception e) {}
 		}
 	}
 }
