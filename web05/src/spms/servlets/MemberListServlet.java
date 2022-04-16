@@ -38,7 +38,6 @@ public class MemberListServlet extends HttpServlet {
 					"SELECT MNO,MNAME,EMAIL,CRE_DATE" + 
 					" FROM MEMBERS" +
 					" ORDER BY MNO ASC");
-			
 			response.setContentType("text/html; charset=UTF-8");
 			ArrayList<Member> members = new ArrayList<Member>();
 			
@@ -49,14 +48,9 @@ public class MemberListServlet extends HttpServlet {
 							.setEmail(rs.getString("EMAIL"))
 							.setCreatedDate(rs.getDate("CRE_DATE"))	);
 			}
-			
 			request.setAttribute("members", members);
-			
 			RequestDispatcher rd = request.getRequestDispatcher("/member/MemberList.jsp");
 			rd.include(request, response);
-			
-			try {if (rs != null) rs.close();} catch(Exception e) {}
-			try {if (stmt != null) stmt.close();} catch(Exception e) {}
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("error", e);

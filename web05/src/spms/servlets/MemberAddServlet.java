@@ -39,7 +39,6 @@ public class MemberAddServlet extends HttpServlet {
 			stmt.setString(2, request.getParameter("password"));
 			stmt.setString(3, request.getParameter("name"));
 			stmt.executeUpdate();
-			
 			response.sendRedirect("list");
 		} catch (Exception e) {
 			e.printStackTrace();

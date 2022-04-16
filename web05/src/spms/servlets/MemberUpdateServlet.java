@@ -36,13 +36,13 @@ public class MemberUpdateServlet extends HttpServlet {
 					"SELECT MNO,MNAME,EMAIL,CRE_DATE" + 
 					" FROM MEMBERS" +
 					" WHERE MNO=" + request.getParameter("no"));
+			
 			if(rs.next()) {
 				Member member =  new Member();
 				member.setNo(rs.getInt("MNO"));
 				member.setEmail(rs.getString("EMAIL"));
 				member.setName(rs.getNString("MNAME"));
 				member.setCreatedDate(rs.getDate("CRE_DATE"));
-				
 				request.setAttribute("member", member);
 			} else {
 				throw new Exception("해당 번호의 회원을 찾을 수 없습니다.");
@@ -50,9 +50,6 @@ public class MemberUpdateServlet extends HttpServlet {
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/member/MemberUpdateForm.jsp");
 			rd.forward(request, response);
-			
-			try {if (rs != null) rs.close();} catch(Exception e) {}
-			try {if (stmt != null) stmt.close();} catch(Exception e) {}
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("error", e);
@@ -78,10 +75,7 @@ public class MemberUpdateServlet extends HttpServlet {
 			stmt.setString(2, request.getParameter("name"));
 			stmt.setInt(3, Integer.parseInt(request.getParameter("no")));
 			stmt.executeUpdate();
-			
 			response.sendRedirect("list");
-			
-			try {if (stmt != null) stmt.close();} catch(Exception e) {}
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("error", e);

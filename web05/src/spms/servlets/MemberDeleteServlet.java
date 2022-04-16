@@ -27,9 +27,7 @@ public class MemberDeleteServlet extends HttpServlet {
 			stmt = conn.prepareStatement("DELETE FROM MEMBERS WHERE MNO=?");
 			stmt.setInt(1, Integer.parseInt(request.getParameter("no")));
 			stmt.executeUpdate();
-			
 			response.sendRedirect("list");
-			try {if (stmt != null) stmt.close();} catch(Exception e) {}
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("error", e);

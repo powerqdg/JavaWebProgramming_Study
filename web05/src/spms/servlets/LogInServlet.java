@@ -40,13 +40,13 @@ public class LogInServlet extends HttpServlet {
 			stmt.setString(1, request.getParameter("email"));
 			stmt.setString(2, request.getParameter("password"));
 			rs = stmt.executeQuery();
+			
 			if (rs.next()) {
 				Member member = new Member()
 						.setEmail(rs.getString("EMAIL"))
 						.setName(rs.getString("MNAME"));
 				HttpSession session = request.getSession();
 				session.setAttribute("member", member);
-				
 				response.sendRedirect("../member/list");
 			} else {
 				RequestDispatcher rd = request.getRequestDispatcher("/auth/LogInFail.jsp");
